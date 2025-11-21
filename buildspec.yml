@@ -1,0 +1,14 @@
+Project Name: repo-sanity-check
+
+Source:
+  Source provider: Amazon S3
+
+Environment:
+  OS: Ubuntu managed image
+  Runtime: Standard (any latest)
+  Role: CodeBuildServiceRole
+
+Buildspec: Use buildspec.yml from your repo
+
+Artifacts:
+  Type: No artifacts
