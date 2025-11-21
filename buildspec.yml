@@ -1,14 +1,14 @@
-Project Name: repo-sanity-check
+version: 0.2
 
-Source:
-  Source provider: Amazon S3
-
-Environment:
-  OS: Ubuntu managed image
-  Runtime: Standard (any latest)
-  Role: CodeBuildServiceRole
-
-Buildspec: Use buildspec.yml from your repo
-
-Artifacts:
-  Type: No artifacts
+phases:
+  install:
+    commands:
+      - echo "Starting sanity check"
+  build:
+    commands:
+      - echo "Checking static-site/index.html exists..."
+      - if [ -f static-site/index.html ]; then echo "OK: static-site found"; else echo "ERROR: static-site missing"; exit 1; fi
+artifacts:
+  files:
+    - '**/*'
+  base-directory: static-site
