@@ -6,7 +6,7 @@ phases:
       - echo "Starting sanity check"
   build:
     commands:
-      - echo "Checking static-site\index.html exists..."
+      - echo "Checking static-site/index.html exists..."
       - if [ -f static-site/index.html ]; then echo "OK: static-site found"; else echo "ERROR: static-site missing"; exit 1; fi
 artifacts:
   files:
