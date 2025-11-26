@@ -5,9 +5,9 @@ phases:
     commands:
       - echo "Packaging static website"
       - mkdir -p build-output
-      - cp -r static-site/* artifact-root/
+      - cp -r static-site/* build-output/
 
 artifacts:
   files:
     - "**/*"
-  base-directory: artifact-root
+  base-directory: build-output
