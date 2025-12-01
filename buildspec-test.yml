@@ -14,20 +14,9 @@ phases:
   build:
     commands:
       - echo "Testing index.html exists"
-      - >
-        if [ -f static-site/index.html ]; then
-          echo "index.html found";
-        else
-          echo "ERROR: index.html missing";
-          exit 1;
-        fi
+      - if [ -f static-site/index.html ]; then echo "index.html found"; else echo "ERROR: index.html missing"; exit 1; fi
       - echo "Checking for href links in index.html"
-      - >
-        if grep -q "href=" static-site/index.html; then
-          echo "Links found";
-        else
-          echo "WARNING: No links found";
-        fi
+      - if grep -q "href=" static-site/index.html; then echo "Links found"; else echo "WARNING: No links found"; fi
 
   post_build:
     commands:
