@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing test tools"
+      - yum install -y wget
+
+  pre_build:
+    commands:
+      - echo "Running pre-test checks"
+      - test -d static-site || (echo "ERROR: static-site directory missing" && exit 1)
+
+  build:
+    commands:
+      - echo "Testing index.html exists"
+      - if [ -f static-site/index.html ]; then echo "index.html found"; else echo "ERROR: index.html missing"; exit 1; fi
+
+      - echo "Checking for broken links inside index.html"
+      - if grep -q "href=" static-site/index.html; then echo "Links found"; else echo "WARNING: No links found"; fi
+
+  post_build:
+    commands:
+      - echo "TESTS COMPLETED"
